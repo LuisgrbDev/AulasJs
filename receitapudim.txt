@@ -4,4 +4,6 @@
 
 3- preparar no tempo
 
-4- consumir resultado
+4- Verificar se esta pronto 
+
+5- consumir resultado

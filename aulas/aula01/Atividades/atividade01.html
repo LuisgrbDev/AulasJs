@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soma</title>
+
+</head>
+<body>
+    <h1>Calculadora de media</h1>
+    <h2>Informe suas notas</h2>
+    <input type="text" id="nota1"> 
+    <input type="text" id="nota2"> 
+    <input type="text" id="nota3"> 
+    <input type="text" id="nota4"> 
+    <button onclick="soma()">Exibir Média</button>
+
+
+
+    <script>
+        function soma(){
+
+        const unidades = 4;
+
+        let nota01 =parseFloat(document.getElementById('nota1').value);
+        let nota02 =parseFloat(document.getElementById('nota2').value);
+        let nota03 =parseFloat(document.getElementById('nota3').value);
+        let nota04 =parseFloat(document.getElementById('nota4').value);
+
+        let somatoria = nota01 + nota02 + nota03 + nota04;
+
+        let notaFinal = somatoria/unidades;
+
+        alert("Sua Media:" + notaFinal)
+    }
+    
+    </script>
+</body>
+</html>

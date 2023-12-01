@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade</title>
+</head>
+
+<body>
+    <h1>Atividade - Variáveis e Tipos de Dados</h1>
+
+    <h2>Declaração e Exibição de Variáveis</h2>
+    <p>Declare três variáveis: uma para armazenar sua idade, outra para seu nome e uma tereceira para o valor de pi.</p>
+    <p>Escreva o código HTML para a exibição dos dados em tela e em console, a partir dessas variáveis.</p>
+
+    <p>Idade: <b id="idade"></b></p> 
+    <p>Nome: <b id="nome"></b></p> 
+    <p>pi: <b id="pi"></b></p> 
+
+
+
+    <script>
+        let idade = 22;
+        const nome = 'Luis';
+        const pi = 3.14;
+        
+        //exibir em HTML
+        document.getElementById('idade').innerHTML = idade;
+        document.getElementById('nome').innerHTML = nome;
+        document.getElementById('pi').innerHTML = pi;
+        //exibir em console.log
+        console.log('Sua Nome é:', nome)
+        console.log('Sua Idade é:', idade)
+        console.log('O valor de pi:', pi)
+
+
+    </script>
+</body>
+
+</html>

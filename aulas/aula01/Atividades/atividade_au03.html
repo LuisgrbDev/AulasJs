@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculo de media</title>
+    <style>
+        #resultado{
+            font-size: 25px;
+            color:black
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Calculadora de Média</h1>
+
+    <h2>Informe as Médias de Notas:</h2>
+
+    <input type="text" placeholder="Primeira Nota" id="notas01">
+    <input type="text" placeholder="Segunda Nota" id="notas02">
+    <input type="text" placeholder="Terceira nota" id="notas03">
+    <input type="text" placeholder="Quarta Nota" id="notas04">
+    <button onclick="soma()">Exibir médias</button>
+    <br><br>
+    <div id="resultado"></div>
+
+    <script>
+        function soma() {
+            let nota1 = parseFloat(document.getElementById('notas01').value);
+            let nota2 = parseFloat(document.getElementById('notas02').value);
+            let nota3 = parseFloat(document.getElementById('notas03').value);
+            let nota4 = parseFloat(document.getElementById('notas04').value);
+
+            let somatoria = nota1 + nota2 + nota3 + nota4;
+
+            resultado = somatoria/4;
+
+            if (resultado >= 7 )
+                document.getElementById('resultado').innerHTML = somatoria + ' Aprovado';
+            else if (resultado >=5 )
+            document.getElementById('resultado').innerHTML =somatoria +  'Recuperação';
+
+            
+            
+
+
+            console.log(resultado)
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>

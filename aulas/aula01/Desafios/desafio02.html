@@ -9,18 +9,28 @@
 
 
 <body>
-    
     <script>
-      let confirm = prompt("deseja continuar?");
+     let resposta = true;
+        
+        // while(resposta) {
+        //     resposta = !confirm("Deseja prosseguir?");
+        // }
 
-      while (confirm == 'sim'){
-       console.log("teste")
-      }
-
-
+        do { 
+          confirm("Deseja prosseguir?")
+          resposta = !confirm("Certeza?");
+        } while(resposta)
     </script>
 
+<h2>Desafio while  com prompt de confirmação</h2>
 
+<code>
+  let resposta = true;
+        
+  while(resposta) {
+      resposta = !confirm("Deseja prosseguir?");
+  }
+</code>
    
 </body>
 </html>

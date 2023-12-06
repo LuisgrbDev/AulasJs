@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <h1>Aula 05 - Trabalhando com Listas em JavaScript</h1>
+
+    <h2>Declaração de Listas</h2>
+    <p>JavaScript oferece a capacidade de trabalhar com listas, uma estrutura que permite armazenar e manipular conjuntos de dados.</p>
+    <pre>
+        <code>
+            // Declaração e inicialização de uma lista
+            let frutas = ['Maçã', 'Banana', 'Uva'];
+        </code>
+    </pre>
+
+    <h2>Acessando Elementos em uma Lista</h2>
+    <p>Os elementos em uma lista podem ser acessados por meio de índices.</p>
+    <pre>
+        <code>
+            // Acessando o primeiro elemento da lista
+            let primeiraFruta = frutas[0];
+
+            // Acessando o segundo elemento da lista
+            let segundaFruta = frutas[1];
+        </code>
+    </pre>
+
+    <script>
+        // Declaração e inicialização de uma lista
+        var frutas = ['Maçã', 'Banana', 'Uva'];
+    
+        // Exibindo os elementos da lista
+        document.write("<h3>Frutas:</h3>");
+        document.write("<ul>");
+    
+        for (let i = 0; i < frutas.length; i++) {
+            document.write("<li>" + frutas[i] + "</li>");
+        }
+    
+        document.write("</ul>");
+    
+        // Adicionando um novo elemento à lista
+        frutas.push('Pêra');
+    
+        // Exibindo a lista atualizada
+        document.write("<h3>Frutas Atualizadas:</h3>");
+        document.write("<ul>");
+    
+        for (let i = 0; i < frutas.length; i++) {
+            document.write("<li>" + frutas[i] + "</li>");
+        }
+        
+        document.write("</ul>");
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

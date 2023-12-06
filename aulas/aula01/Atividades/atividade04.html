@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado Corrida</title>
+</head>
+
+<body>
+
+    <h1>Desafio - Tempo de Voltas</h1>
+
+    <script>
+        let voltas = prompt('Qual a quantidade de voltas que o corredor dara?');
+
+        for (let v = 0; v < voltas; v++) {
+            document.write('tempo de volta: ', v, ` Segundos: <input type='number' id='volta${v}''><br>`);
+
+            // document.write(`<label for="volta${v}">Tempo da Volta ${v} (segundos): </label>`)
+            // document.write(`<input type="number" id="volta${v}" name="volta${v}" required><br>`);
+        }
+
+        document.write('<button onclick="exibirResultados()">exibir Resultados</button>');
+
+        function exibirResultados() {
+            let tempos = [];
+
+            for (let v = 0; v <= voltas; v++) {
+                let tempo = document.getElementById(`volta${v}`.value);
+                tempo =parseInt(tempo)
+
+                tempos.push(tempo);
+                console.log(tempos)
+            }
+
+
+        }
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

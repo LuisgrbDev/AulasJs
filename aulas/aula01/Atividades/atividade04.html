@@ -6,41 +6,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resultado Corrida</title>
 </head>
+<!-- crie um programa que o usuário insira a quantidade de voltas e apareça na pagina a quantidade de voltas e um área para inserir o tempo em segundos das voltas e ao clicar em exibir resultados, apareça um alert informando a corrida mais rápida, a mais lenta e a media da corrida -->
 
 <body>
 
     <h1>Desafio - Tempo de Voltas</h1>
 
     <script>
-        let voltas = prompt('Qual a quantidade de voltas que o corredor dara?');
+        // crie um programa que o usuário insira a quantidade de voltas
 
-        for (let v = 0; v < voltas; v++) {
-            document.write('tempo de volta: ', v, ` Segundos: <input type='number' id='volta${v}''><br>`);
+        let volta = prompt('Qual a quantidade de voltas que o corredor dara?');
+        // apareça na pagina a quantidade de voltas e um área para inserir o tempo em segundos das voltas 
+
+        for (let v = 0; v < volta; v++) {
+            document.write(`<label for="volta${v}">Tempo de Volta${v} (segundos): </label>`);
+            document.write(`<input type="number" id="volta${v}" name="volta${v}" required><br>`);
 
             // document.write(`<label for="volta${v}">Tempo da Volta ${v} (segundos): </label>`)
             // document.write(`<input type="number" id="volta${v}" name="volta${v}" required><br>`);
         }
+        //ao clicar em exibir resultados, apareça um alert informando a corrida mais rápida, a mais lenta e a media da corrida
 
-        document.write('<button onclick="exibirResultados()">exibir Resultados</button>');
+        document.write('<button onclick="exibirResultados()">Exibir Resultados </button>');
 
         function exibirResultados() {
             let tempos = [];
 
-            for (let v = 0; v <= voltas; v++) {
-                let tempo = document.getElementById(`volta${v}`.value);
-                tempo =parseInt(tempo)
-
+            for (let v = 0; v < volta; v++) {
+                let tempo = document.getElementById(`volta${v}`).value;
+                tempo = parseInt(tempo);
                 tempos.push(tempo);
-                console.log(tempos)
+
+                // Forma de reduzir o codigo: 
+                // tempos.push(parseInt(document.getElementById(`volta${i}`).value));            
             }
+            console.log(tempos);
+
+            let voltaMaisRapida = tempos[0];
+            for (let v = 1; v < tempos.length; v++) {
+                if (tempos[v] < voltaMaisRapida)
+                    voltaMaisRapida = tempos[v]
+            };
+
+
+            let voltaMaisLenta = tempos[0];
+
+            for (let v = 0; v < tempos.length; v++) {
+                if (tempos[v] > voltaMaisLenta) {
+                    voltaMaisLenta = tempos[v];
+                };
+            };
+
+
+            let mediaVolta = 0;
+
+            for (let v = 0; v < tempos.length; v++) {
+                mediaVolta = mediaVolta + tempos[v];
+
+
+            }
+            let mediaVoltas = mediaVolta / volta;
+            alert(`Volta mais rapida:${voltaMaisRapida} segundos\nVolta mais lenta${voltaMaisLenta} segundos\n Media total das corridas${mediaVoltas}`)
+
+
 
 
         }
-
-
-
-
-
 
 
 

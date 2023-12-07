@@ -56,6 +56,42 @@
         
         document.write("</ul>");
     </script>
+
+<h2>Manipulação de Strings como Listas</h2>
+<p>Em JavaScript, é possível tratar strings como listas e realizar diversas operações.</p>
+<pre>
+    <code>
+        // Declaração e inicialização de uma string
+        let texto = "JavaScript";
+
+        // Acessando caracteres da string como se fossem elementos de um array
+        for (var i = 0; i < texto.length; i++) {
+            console.log("Caractere na posição " + i + ": " + texto[i]);
+        }
+
+        // Revertendo uma string
+        let textoArray = texto.split('');
+        let arrayRevertido = textoArray.reverse();
+        let stringRevertida = arrayRevertido.join('');
+        console.log("String Revertida: " + stringRevertida);
+    </code>
+
+    
+    <script>
+        let texto = "JavaScript";
+          //Valor de inicio; valor de fim;incrementação
+        for(let i = 0; i <texto.length; i++){
+            //`string ${}` formas de concatenar tambem
+            console.log(`caractere na posição${i}:${texto[i]}`)
+        }
+    </script>
+    <!-- <script>
+        let textoArray = texto.split('');
+        let arrayRevertido = textoArray.reverse();
+        let stringRevertida = arrayRevertido.join('');
+        console.log("String Revertida: " + stringRevertida);
+    </script> -->
+</pre>
 </body>
 </html>
 

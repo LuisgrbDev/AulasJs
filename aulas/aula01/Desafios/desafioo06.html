@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio 05</title>
+</head>
+
+<body>
+
+    <h2>Digite suas notas: </h2>
+    <script>
+        let unidades = parseInt(prompt("Nos informe a quantidade de unidades:"));
+        for (let u = 0; u < unidades; u++) {
+            document.write(`<label for="nota${u}">Nota: </label>`);
+            document.write(`<input type="number" id="nota${u}" name="nota${u}" required><br>`);
+        }
+        document.write('<button onclick="enviarNotas()">Enviar Notas:</button>');
+
+        function enviarNotas() {
+            let lista = [];
+            let soma = 0;
+          
+
+            for (let u = 0; u < unidades; u++) {
+                let notas = parseInt(document.getElementById(`nota${u}`).value);
+                lista.push(notas)
+            }
+            console.log(lista);
+            
+            for(let u =0; u<lista.length; u++){
+                soma = soma + lista[u];
+            }
+
+              
+        
+           
+           
+
+
+        }
+        
+        function calcularMedia(lista) {
+                var soma = 0;
+                for (var i = 0; i < lista.length; i++) {
+                    soma += lista[i];
+                }
+                return soma / lista.length;
+            }
+    </script>
+</body>
+
+</html>

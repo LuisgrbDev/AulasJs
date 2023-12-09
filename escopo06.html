@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escopo</title>
+</head>
+<body>
+    <h1>Entendendo o Escopo de Variáveis</h1>
+    <script>
+
+        // let valor = 10;      
+        // if( valor > 2)
+        // {
+        //     let soma = 0;
+        //     soma = valor *5;
+        // }
+        // console.log(soma)
+
+         // Função com variável local
+
+         let mensagem ="";
+         function exibirMensagem() {
+                var mensagem = 'Essa é uma mensagem local.';
+                console.log(mensagem);
+            }
+
+            // Tentativa de acessar a variável fora da função (resultará em erro)
+            console.log(exibirMensagem());
+
+            
+    </script>
+</body>
+</html>

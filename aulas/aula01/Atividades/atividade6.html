@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Atividade - funções</h1>
+
+    <!-- <script>
+        let texto = "Qualquer texto";
+        function tamanhoTexto(textorecebido){
+            return textorecebido.length;
+
+        }
+        console.log("O texto tem:", tamanhoTexto(texto));
+    </script> -->
+    <script>
+        // função que recebe uma lista de nomes e retorne o de maior tamanho
+        // let listName = ['Luis', 'carlos', 'Josenildo'];
+        // console.log(maiorNome(listName));
+
+
+
+        // function maiorNome(nomes) {
+
+        //     let maior = nomes[0];
+        //     for (let n = 1; n < listName.length; n++) {
+        //         if (listName[n].length > maior.length) {
+        //             maior = listName[n];
+
+
+
+        //         }
+
+        //     }
+        //     return maior
+        // }
+
+
+        //função que recebe um numero e informe se o mesmo é par;
+
+        let number = 10;
+        let resposta = "";
+
+        console.log(ePar(resposta));
+
+        function ePar(numeros) {
+            //retunr numero % 2 === 0;
+            resposta = number % 2;
+
+            if (resposta === 0) {
+                document.write("esse numero:" + number + " é par")
+                return resposta
+            }
+
+            
+
+
+        }
+        //função que recebe uma lista de numeros e retorne apenas impares
+
+        function impares(listaNumeros){
+            let impares = [];
+
+            for(let numero = 0; numero < listaNumeros.length; numero++){
+
+                if (!ePar(listaNumeros[numero])){
+                    impares.push(listaNumeros[numero])
+                }
+            }
+
+            return impares;
+        }
+        let numerosParaExtrair = [1,2,3,4,5,6,7,8,9,10,11]
+        console.log(impares(numerosParaExtrair))
+
+    </script>
+</body>
+
+</html>

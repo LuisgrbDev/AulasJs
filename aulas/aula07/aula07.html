@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Compras</title>
+</head>
+
+<body>
+    <center>
+        <h1>Lista de Compras</h1>
+        <input type="text" id="itemInput" placeholder="Digite um Item...">
+        <button onclick="enviarItem()">Adicionar Item</button>
+        <ul id="listaDeCompras">
+
+        </ul>
+        <p>Total de itens: <span id="totalItens">0</span></p>
+    </center>
+    <script>
+        function enviarItem() {
+            let itemInput = document.getElementById("itemInput").value.trim();
+            if (itemInput !== "") {
+                let listaDeCompras = document.getElementById("listaDeCompras");
+                //criação de nova linnha
+
+                let novaLinha = document.createElement("li");
+
+                //bottão de remoção
+                let botaoRemover = document.createElement("button");
+                botaoRemover.innerHTML = "Remover";
+                botaoRemover.onclick = function () {
+                    removerItem(novaLinha);
+                }
+
+
+                //adição do bottão antes do nome do item
+                novaLinha.appendChild(botaoRemover);
+                //adição do nomee do item
+                novaLinha.appendChild(document.createTextNode(itemInput));
+                //adicionado a linha na lista
+                listaDeCompras.appendChild(novaLinha);
+                atualizarTotalItens()
+            }
+        }
+
+        function removerItem(linha) {
+            let listaDeCompras = document.getElementById("listaDeCompras");
+            listaDeCompras.removeChild(linha);
+
+            atualizarTotalItens()
+
+        }
+        function atualizarTotalItens() {
+            let listaDeCompras = document.getElementById("listaDeCompras");
+            let totalItens = document.getElementById("totalItens");
+
+            totalItens.textContent = listaDeCompras.childElementCount;
+
+        }
+
+
+
+    </script>
+</body>
+
+</html>

@@ -40,10 +40,28 @@ class Revista extends MaterialBibliografico{
 }
 
 function realizarAcao(acao){
-    
+    const selectLivros = document.getElementById("livros");
+
+    if(selectLivros.selectedIndex === 0){
+        alert("Por Favor, selecione um livro válido")
+        return;
+    }
+
+    const livroSelecionado = livros[selectLivros.selectedIndex - 1];
+
+    if(acao === "emprestimo"){
+       const emprestimoSucesso = livroSelecionado.realizarEmprestimo();
+       exibirResultado(`Emprestimo de ${livroSelecionado.titulo}: ${emprestimoSucesso? 'Sucesso' : 'Material já emprestado'}`)
+    } else if (acao === "devolucao"){
+        const devolucaoSucesso = livroSelecionado.realizarDevolucao();
+        exibirResultado(`Devolução de ${livroSelecionado.titulo}: ${devolucaoSucesso? 'Sucesso' : 'Material já Devolvido'}`)
+    }
 }
 
-
+function exibirResultado(mensagem){
+    const resultadoDiv = document.getElementById("resultado");
+    resultadoDiv.innerHTML += `<p>${mensagem}<p>`
+}
 
 
 

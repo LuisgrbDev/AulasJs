@@ -38,3 +38,31 @@ class Revista extends MaterialBibliografico{
     }
     
 }
+
+function realizarAcao(acao){
+    
+}
+
+
+
+
+
+
+const livros = [
+    new Livro("O Senhor dos Aneis","J.R.R Tolkien", "Fantasia"),
+    new Livro("Harry Potter e a Pedra Filosofal", "J.k. Rowling", "Fantasia" ),
+    new Livro("Reflexos do Silêncio", "Luis Benvindo", "Poesias"),
+    new Revista("National Geographic", "National Geographic Society", "Ciência")
+];
+
+const selectLivros = document.getElementById("livros");
+
+for(let i = 0; i < livros.length; i++){
+    const livro = livros[i];
+    const option = document.createElement("option");
+    option.value = i+1;  //Adiciona 1 para evitar o valor 0, que representa a opção padrão
+    option.text = livro.titulo;
+    selectLivros.add(option);
+}
+
+

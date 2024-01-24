@@ -21,6 +21,9 @@ class MaterialBibliografico{
             return false; //livro já foi devolvido
         }
     }
+    toString() {
+        return `${this.titulo} - ${this.autor}`
+    }
 }
 
 class Livro extends MaterialBibliografico{
@@ -28,6 +31,10 @@ class Livro extends MaterialBibliografico{
         super(titulo, autor);
         this.genero = genero;
         
+    }
+
+    toString(){
+        return `${super.toString()} - ${this.genero}`
     }
 }
 
@@ -63,9 +70,6 @@ function exibirResultado(mensagem){
     resultadoDiv.innerHTML += `<p>${mensagem}<p>`
 }
 
-
-
-
 const livros = [
     new Livro("O Senhor dos Aneis","J.R.R Tolkien", "Fantasia"),
     new Livro("Harry Potter e a Pedra Filosofal", "J.k. Rowling", "Fantasia" ),
@@ -84,3 +88,5 @@ for(let i = 0; i < livros.length; i++){
 }
 
 
+console.log(livros [0].toString());
+console.log(livros[3].toString());

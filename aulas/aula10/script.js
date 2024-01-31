@@ -133,13 +133,13 @@ class Arqueiro extends Personagem {
 
     atacar(inimigo) {
 
-        if (Math.abs(inimigo.posicao - this.posicao > 3  && this.flechas >= 6)) {
+        if (Math.abs(inimigo.posicao - this.posicao > 3  && this.flechas >= 0)) {
             
             super.atacar(inimigo);
 
         } else if (inimigo.posicao - this.posicao < 3){
             console.log(`${inimigo.nome} muito perto para ${this.nome} atacar.`)
-        } else if (this.flechas < 6){
+        } else if (this.flechas < 0){
             console.log(` ${this.nome} com total de flechas de ${this.flechas} impossivel atacar`)
         }
     }

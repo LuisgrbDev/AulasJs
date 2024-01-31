@@ -23,7 +23,22 @@ Exercício:
     - Crie uma função de recuperar vida que recebe um total de pontos para recuperar
     - A recuperação de via não pode fazer o personaem ir além da vida máxima
 
-    Crie 3 class arqueiro guerreiro e mago
+Parte 3: Crie a herança
+    - Crie as classes Arqueiro, Guerreiro e Mago
+    - Todas as 3 classes herdam de personagem
+
+Alterações do Guerreiro:
+    - Acrescente a propriedade "escudo" na classe Guerreiro.
+    - A função tomarDano do Guerreiro deve proteger seus pontos de vida,
+    abatendo o dano sofrido dos pontos do seu escudo.    
+    
+    - Acrescente a sobrescrita da função atacar, verificando a posição do inimigo
+    - Se o inimigo estiver a mais de 1 de distância, o guerreiro não pode atacar.
+
+Alterações do Arqueiro:
+    - O arqueiro só pode atacar se a distancia dele para o oponente for maior do que 3.
+    - O arqueiro tem um totalDeFlechas.
+    - O arqueiro só pode atacar se o totla de flechas for maior que 0
 */
 
 class Personagem {
@@ -42,16 +57,16 @@ class Personagem {
             return "morreu"
     }
 
-    tomarDano(valorDano) {
+    tomarDano(quantidade) {
         if (this.vivo = false) {
             console.log(`${this.nome} Não pode receber dano`)
         }
-        this.vida = this.vida - valorDano;
+        this.vida = this.vida - quantidade;
         if (this.vida <= 0) {
             this.vida = 0
-            console.log(`${this.nome}, recebeu Dano:${valorDano} sua vida é:${this.vida = 0}. MORREUUU DOIDO`);
+            console.log(`${this.nome}, recebeu Dano:${quantidade} sua vida é:${this.vida = 0}. MORREUUU DOIDO`);
         } else {
-            console.log(`${this.nome}, recebeu Dano:${valorDano} sua vida é:${this.vida}`);
+            console.log(`${this.nome}, recebeu Dano:${quantidade} sua vida é:${this.vida}`);
         }
     }
 
@@ -85,15 +100,23 @@ class Guerreiro extends Personagem {
     tomarDano(quantidade) {
         console.log(`${this.nome}, recebeu Dano:${quantidade} seu escudo é:${this.escudo}`);
         if (quantidade > this.escudo) {
-    quantidade =  quantidade - this.escudo;
+            quantidade = this.escudo - quantidade;
             console.log(`${this.nome} ficou com  seu escudo ficou com:${quantidade}`);
-        }else {
+        } else {
             quantidade = 0
         }
-        
-        
-       
-        super.tomarDano(valorDano)
+
+        super.tomarDano(quantidade)
+
+    }
+
+
+    atacar(inimigo) {
+        if (Math.abs(inimigo.posicao - this.posicao) < 2) {
+            super.atacar(inimigo);
+        } else {
+            console.log(`${inimigo.nome} muito distante para ${this.nome} atacar.`)
+        }
 
     }
 
@@ -103,11 +126,24 @@ class Guerreiro extends Personagem {
 
 
 class Arqueiro extends Personagem {
-    constructor() {
+    constructor(nome, vida, ataque, defesa, posicao, vivo = true, flechas) {
+        super(nome, vida, ataque, defesa, posicao, vivo = true);
+        this.flechas = flechas;
+    }
 
+    atacar(inimigo) {
+
+        if (Math.abs(inimigo.posicao - this.posicao > 3  && this.flechas >= 6)) {
+            
+            super.atacar(inimigo);
+
+        } else if (inimigo.posicao - this.posicao < 3){
+            console.log(`${inimigo.nome} muito perto para ${this.nome} atacar.`)
+        } else if (this.flechas < 6){
+            console.log(` ${this.nome} com total de flechas de ${this.flechas} impossivel atacar`)
+        }
     }
 }
-
 
 class Mago extends Personagem {
     constructor(nome, vida, ataque, defesa, posicao, vivo = true, magia) {
@@ -118,13 +154,16 @@ class Mago extends Personagem {
 
 
 
-let personagem1 = new Guerreiro("Arthur", 100, 12, 90, 1, true, 15);
-let personagem2 = new Mago("Gendalf", 110, 14, 55, 1, true, 90);
-
+let personagem1 = new Guerreiro("Arthur", 100, 12, 90, 4, true, 15);
+let personagem2 = new Mago("Gendalf", 100, 14, 55, 5, true, 90);
+let personagem3 = new Arqueiro("legolas", 100, 14, 55, 5, true, 6);
 
 console.log(personagem1);
 console.log(personagem2);
-console.log(personagem2.atacar(personagem1))
+// console.log(personagem2.atacar(personagem1))
+
+console.log(personagem3.atacar(personagem1))
+
 // console.log(personagem1.atacar(personagem2));
 // console.log(personagem2.recuperar(1, personagem1));
 

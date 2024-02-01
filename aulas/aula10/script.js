@@ -154,30 +154,45 @@ class Arqueiro extends Personagem {
 }
 
 class Mago extends Personagem {
-    constructor(nome, vida, ataque, defesa, posicao, vivo = true, magia) {
+    constructor(nome, vida, ataque, defesa, posicao,magia,vivo = true) {
         super(nome, vida, ataque, defesa, posicao, vivo = true);
-        this.magia = magia;
+        this.magia = this.vidaMaxima/2;
+    }   
+
+    atacar(inimigo){
+        console.log(`pontos magia ${this.magia}`)
+        if (Math.abs(this.posicao - inimigo.posicao ) > 1 && Math.abs(this.posicao - inimigo.posicao ) < 6 ){
+            super.atacar(inimigo);
+            this.magia -= 2
+            console.log(`pontos magia ${this.magia}`)
+        } else{
+            console.log(`não pode`)
+        }
     }
+
 }
 
 
 
 let persoGuerreiro = new Guerreiro("Arthur", 100, 12, 90, 4, true, 15);
-let persoMago = new Mago("Gendalf", 100, 14, 55, 5, true, 90);
-let persoArqueiro = new Arqueiro("legolas", 100, 10, 60, 9, 2, true);
+let persoMago = new Mago("Gendalf", 100, 14, 55, 7,);
+let persoArqueiro = new Arqueiro("legolas", 100, 10, 60, 10, 4, true);
 let persoArqueiro2 = new Arqueiro("Robin Hood", 100, 9, 60, 3, 2, true);
 
 // console.log(persoGuerreiro);
 // console.log(persoArqueiro);
+console.log(persoMago);
+console.log(persoMago.atacar(persoArqueiro));
 
 
-console.log(persoArqueiro.atacar(persoArqueiro2));
-console.log(persoArqueiro)
-console.log(persoArqueiro2)
-console.log(persoArqueiro.atacar(persoArqueiro2))
-console.log(persoArqueiro.atacar(persoArqueiro2))
-console.log(persoArqueiro.recarregarFlechas(2))
-console.log(`Total de flechas ${persoArqueiro.nome} agora é de: ${persoArqueiro.recarregarFlechas(2)} `)
+
+// console.log(persoArqueiro.atacar(persoArqueiro2));
+// console.log(persoArqueiro)
+// console.log(persoArqueiro2)
+// console.log(persoArqueiro.atacar(persoArqueiro2))
+// console.log(persoArqueiro.atacar(persoArqueiro2))
+// console.log(persoArqueiro.recarregarFlechas(2))
+// console.log(`Total de flechas ${persoArqueiro.nome} agora é de: ${persoArqueiro.recarregarFlechas(2)} `)
 
 
 

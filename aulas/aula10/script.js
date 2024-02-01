@@ -53,12 +53,12 @@ class Personagem {
     }
 
     morrer() {
-        if (this.vivo == false)
+        if (this.vivo === false)
             return "morreu"
     }
 
     tomarDano(quantidade) {
-        if (this.vivo = false) {
+        if (this.vivo === false) {
             console.log(`${this.nome} Não pode receber dano`)
         }
         this.vida = this.vida - quantidade;
@@ -126,22 +126,30 @@ class Guerreiro extends Personagem {
 
 
 class Arqueiro extends Personagem {
-    constructor(nome, vida, ataque, defesa, posicao, vivo = true, flechas) {
+    constructor(nome, vida, ataque, defesa, posicao, flechas, vivo = true) {
         super(nome, vida, ataque, defesa, posicao, vivo = true);
         this.flechas = flechas;
     }
 
     atacar(inimigo) {
 
-        if (Math.abs(inimigo.posicao - this.posicao > 3  && this.flechas >= 0)) {
-            
+        if (Math.abs(this.posicao - inimigo.posicao > 3 && this.flechas > 0)) {
+            console.log(`${this.nome}: total de flechas de: ${this.flechas} `)
             super.atacar(inimigo);
+            this.flechas -= 1;
+            console.log(`${this.nome} total de flechas de: ${this.flechas} `);
 
-        } else if (inimigo.posicao - this.posicao < 3){
-            console.log(`${inimigo.nome} muito perto para ${this.nome} atacar.`)
-        } else if (this.flechas < 0){
-            console.log(` ${this.nome} com total de flechas de ${this.flechas} impossivel atacar`)
+        } else if (this.posicao - inimigo.posicao < 3) {
+            console.log(`${inimigo.nome} muito perto para ${this.nome} atacar.`);
+        } else if (this.flechas <= 0) {
+            console.log(` ${this.nome} com total de flechas: ${this.flechas}; IMPOSSIVEL ATACAR, CORREE ${this.nome}`)
         }
+    }
+
+    recarregarFlechas(quantidades){
+        // console.log(`${this.nome} total de flechas de: ${this.flechas} `);
+        this.flechas += quantidades;
+        return this.flechas;
     }
 }
 
@@ -154,18 +162,28 @@ class Mago extends Personagem {
 
 
 
-let personagem1 = new Guerreiro("Arthur", 100, 12, 90, 4, true, 15);
-let personagem2 = new Mago("Gendalf", 100, 14, 55, 5, true, 90);
-let personagem3 = new Arqueiro("legolas", 100, 14, 55, 5, true, 6);
+let persoGuerreiro = new Guerreiro("Arthur", 100, 12, 90, 4, true, 15);
+let persoMago = new Mago("Gendalf", 100, 14, 55, 5, true, 90);
+let persoArqueiro = new Arqueiro("legolas", 100, 10, 60, 9, 2, true);
+let persoArqueiro2 = new Arqueiro("Robin Hood", 100, 9, 60, 3, 2, true);
 
-console.log(personagem1);
-console.log(personagem2);
-// console.log(personagem2.atacar(personagem1))
+// console.log(persoGuerreiro);
+// console.log(persoArqueiro);
 
-console.log(personagem3.atacar(personagem1))
 
-// console.log(personagem1.atacar(personagem2));
-// console.log(personagem2.recuperar(1, personagem1));
+console.log(persoArqueiro.atacar(persoArqueiro2));
+console.log(persoArqueiro)
+console.log(persoArqueiro2)
+console.log(persoArqueiro.atacar(persoArqueiro2))
+console.log(persoArqueiro.atacar(persoArqueiro2))
+console.log(persoArqueiro.recarregarFlechas(2))
+console.log(`Total de flechas ${persoArqueiro.nome} agora é de: ${persoArqueiro.recarregarFlechas(2)} `)
+
+
+
+
+
+
 
 
 

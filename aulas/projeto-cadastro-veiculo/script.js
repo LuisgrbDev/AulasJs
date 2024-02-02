@@ -60,11 +60,29 @@ function exibirVeiculos(){
 
     for( let i = 0; i < veiculos.length ; i++){
         const veiculosItem = document.createElement("li");
-       
-        veiculosItem.innerHTML = veiculos[i].modelo;
+        const veiculoCard = criarVeiculoCard(veiculos[i]);
+        veiculoList.appendChild(veiculoCard)
+        
         veiculoList.appendChild(veiculosItem);
     }
 
+}
+
+function criarVeiculoCard(veiculo){
+    const veiculoCard = document.createElement("div");
+    veiculoCard.className ="veiculo-card";
+
+    const imagemVeiculo = document.createElement("img");
+    imagemVeiculo.src= veiculo.imagemURL;
+
+    imagemVeiculo.className = "veiculo-imagem"
+    imagemVeiculo.alt = `${veiculo.marca} ${veiculo.modelo}`;
+    veiculoCard.appendChild(imagemVeiculo);
+    
+    const detalheVeiculo = document.createElement("div");
+    detalheVeiculo.textContent = veiculo.exibirDetalhe() + `Distancia Máxima: ${veiculo.calcularDistanciaMaxima()}km`;
+    veiculoCard.appendChild(detalheVeiculo)
+    return veiculoCard
 }
 
 // veiculos.push(new Veiculo("Fiat","Uno",60000, 'branco', 16,90,'www.url.com.br'));

@@ -25,13 +25,35 @@ class Veiculo{
     }
 }
 
+
 let veiculos = [];
+function cadastrarVeiculos(){
+    //receber dados html
+    const marca = document.getElementById("marca").value;
+    const modelo = document.getElementById("modelo").value;
+    const preco = parseInt(document.getElementById("preco").value);
+    const cor = document.getElementById("cor").value;
+    const autonomia = parseInt(document.getElementById("autonomia").value);
+    const capacidadeTanque= parseFloat(document.getElementById("capacidadeTanque").value);
+    const imagemUrl = document.getElementById("imagemUrl").value;
+    
+    //instanciar um novo objeto veiculo,passando os valores pedidos na class
+    const veiculo = new Veiculo(marca,modelo,preco,cor,autonomia,capacidadeTanque,imagemUrl);
+    
+    //ad o veiculo a lista
+    veiculos.push(veiculo)
 
-veiculos.push(new Veiculo("Fiat","Uno",60000, 'branco', 16,90,'www.url.com.br'));
-veiculos.push(new Veiculo("Fiat","Toro",70000, 'branco', 16,90,'www.url.com.br'));
-veiculos.push(new Veiculo("chevrolet","cruze",60000, 'branco', 16,90,'www.url.com.br'));
+    //reseta/limpa o formulario
+    document.getElementById("veiculoForm").reset();
 
-console.log(veiculos)
+    
+}
+
+// veiculos.push(new Veiculo("Fiat","Uno",60000, 'branco', 16,90,'www.url.com.br'));
+// veiculos.push(new Veiculo("Fiat","Toro",70000, 'branco', 16,90,'www.url.com.br'));
+// veiculos.push(new Veiculo("chevrolet","cruze",60000, 'branco', 16,90,'www.url.com.br'));
+
+
 
 
 

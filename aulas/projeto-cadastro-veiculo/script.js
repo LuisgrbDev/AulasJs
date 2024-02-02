@@ -41,12 +41,30 @@ function cadastrarVeiculos(){
     const veiculo = new Veiculo(marca,modelo,preco,cor,autonomia,capacidadeTanque,imagemUrl);
     
     //ad o veiculo a lista
-    veiculos.push(veiculo)
+    veiculos.push(veiculo);
 
+    //exibe o resultado no html
+    exibirVeiculos();
     //reseta/limpa o formulario
     document.getElementById("veiculoForm").reset();
 
     
+}
+
+function exibirVeiculos(){
+
+    const veiculoList = document.getElementById("veiculosList");
+
+    //limpar lista antes de exibir veiculos
+    veiculoList.innerHTML = "";
+
+    for( let i = 0; i < veiculos.length ; i++){
+        const veiculosItem = document.createElement("li");
+       
+        veiculosItem.innerHTML = veiculos[i].modelo;
+        veiculoList.appendChild(veiculosItem);
+    }
+
 }
 
 // veiculos.push(new Veiculo("Fiat","Uno",60000, 'branco', 16,90,'www.url.com.br'));

@@ -7,9 +7,10 @@ Parte 1
 
 
 class Veiculo{
-    constructor(marca, modelo,preco, cor, autonomia, capacidadeTanque,imagemURL){
+    constructor(marca, modelo, anoDeFabricacao, preco, cor, autonomia, capacidadeTanque,imagemURL){
         this.marca = marca
         this.modelo = modelo;
+        this.anoDeFabricacao = anoDeFabricacao;
         this.preco = preco
         this.cor = cor;
         this.autonomia = autonomia;
@@ -21,8 +22,17 @@ class Veiculo{
     }
 
     exibirDetalhe(){
-        return `${this.marca} - ${this.modelo} - ${this.cor} - R$:${this.preco.toFixed(2)}`;
+        if(this.ipva()){
+        return `${this.marca} - ${this.modelo} - ${this.anoDeFabricacao} - ${this.cor} - R$:${this.preco.toFixed(2)} ISENTO DE IPVA /n`;
+        }
     }
+
+    ipva(){
+        let ano = new Date;
+        ano = ano.getFullYear();
+        return ano - this.anoDeFabricacao >= 20;  
+    }
+    
 }
 
 
@@ -31,6 +41,7 @@ function cadastrarVeiculos(){
     //receber dados html
     const marca = document.getElementById("marca").value;
     const modelo = document.getElementById("modelo").value;
+    const anoDeFabricacao =parseInt( document.getElementById("anoDeFabricacao").value);
     const preco = parseInt(document.getElementById("preco").value);
     const cor = document.getElementById("cor").value;
     const autonomia = parseInt(document.getElementById("autonomia").value);
@@ -38,8 +49,8 @@ function cadastrarVeiculos(){
     const imagemUrl = document.getElementById("imagemUrl").value;
     
     //instanciar um novo objeto veiculo,passando os valores pedidos na class
-    const veiculo = new Veiculo(marca,modelo,preco,cor,autonomia,capacidadeTanque,imagemUrl);
-    
+    const veiculo = new Veiculo(marca,modelo,anoDeFabricacao,preco,cor,autonomia,capacidadeTanque,imagemUrl);
+   
     //ad o veiculo a lista
     veiculos.push(veiculo);
 
@@ -50,6 +61,7 @@ function cadastrarVeiculos(){
 
     
 }
+
 
 function exibirVeiculos(){
 

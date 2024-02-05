@@ -49,7 +49,7 @@ class ContaCorrente extends Conta{
 
 
 class ContaPoupanca extends Conta{
-    constructor(numero,saldo,taxaRendimento =0.02){
+    constructor(numero,saldo,taxaRendimento = 0.02){
         super(numero,saldo);
         this.taxaRendimento = taxaRendimento;
 
@@ -73,3 +73,5 @@ console.log("Apliquei rendimento a conta poupança");
 
   console.log(contaCorr.toString());
   console.log(contaPoup.toString());
+
+  

@@ -76,27 +76,14 @@ class ContaPoupanca extends ContaBancaria {
 let contas = [];
 let clientes = [];
 
+function cadastrarCliente(){
+    // pegar dados de tela;
+    const nome = document.getElementById("nomeCliente").value;
+    const cpf = document.getElementById("cpfCliente").value;
+    //instanciar novo cliente;
+    const cliente  =  new Cliente(nome, cpf);
+    //add o cliente a lista de clientes;
+    clientes.push(cliente);
+} 
 
 
-// let clienteA = new Cliente("Fulano", "1234567890");
-// clientes.push(clienteA);
-// let clienteB = new Cliente("Beltrano", "0987654321");
-// clientes.push(clienteB);
-
-// let contaX = new ContaCorrente(clienteA, 123, 200, 150);
-// contas.push(contaX);
-// let contaY = new ContaPoupanca(clienteB, 111, 0, 0.01);
-// contas.push(contaY);
-// let contaZ = new ContaCorrente(clienteB, 235, 0, 180);
-// contas.push(contaZ);
-
-// console.log("antes de sacar: ", contaX.saldo) // antes de sacar
-
-// contaX.sacar(200)
-
-// console.log("depois de sacar: ", contaX.saldo)
-
-// console.log(contas);
-// console.log(clientes);
-
-// console.log(contaY.cliente.nome);

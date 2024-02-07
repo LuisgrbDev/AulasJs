@@ -41,6 +41,10 @@ class ContaBancaria {
 
     }
 
+    toString(){
+        return `Numero: ${this.numero} - Saldo: ${this.saldo} - Cliente: ${this.cliente.nome}`
+    }
+
 }
 
 
@@ -87,14 +91,28 @@ function cadastrarCliente() {
     clientes.push(cliente);
 
     atualizarSeletorClientes();
+    exibirClientes();
+}
+
+function exibirClientes() {
+    const clientesList = document.getElementById("clienteList");
+    // Limpar a lista antes de exibir os clientes
+    clientesList.innerHTML = "";
+
+    for (let i = 0; i < clientes.length; i++) {
+        const clienteItem = document.createElement("li");
+        clienteItem.textContent = `Nome: ${clientes[i].nome} - CPF: ${clientes[i].cpf}`;
+        clientesList.appendChild(clienteItem);
+    }
 }
 
 function atualizarSeletorClientes() {
     const seletorClientes = document.getElementById("cliente");
 
     seletorClientes.innerHTML = "";
+
     clientes.forEach(cliente => {
-        const option = document.createElement("option")
+        const option = document.createElement("option");
         option.value = cliente.cpf;
         option.textContent = cliente.nome;
         seletorClientes.appendChild(option);
@@ -106,7 +124,7 @@ function cadastrarConta() {
     //pegar os dados da tela 
     const numero = parseInt(document.getElementById("numero").value);
     const saldo = parseFloat(document.getElementById("saldo").value);
-    const tipoConta = parseFloat(document.getElementById("tipoConta").value);
+    const tipoConta = document.getElementById("tipoConta").value;
     //identificar o cliente selecionado na lista de clientes
     const clienteSelecionado = document.getElementById("cliente").value;
     const cliente = clientes.find(c => c.cpf === clienteSelecionado);
@@ -122,9 +140,32 @@ function cadastrarConta() {
             conta = new ContaPoupanca(cliente, numero, saldo, 0.01);
             break;
         default:
-            alert("Tipo selecionado  invalido");
-            break
+            alert("Tipo selecionado invalido");
+            break;
     }
     contas.push(conta)
 }
 
+function exibirContas() {
+    const contasList = document.getElementById("contaList");
+    // Limpar a lista antes de exibir as contas
+    contasList.innerHTML = "";
+
+    for (let i = 0; i < contas.length; i++) {
+        const contaItem = document.createElement("li");
+        const contaCard = criarContaCard(contas[i]);
+        contasList.appendChild(contaCard);
+        contasList.appendChild(contaItem);
+    }
+}
+
+function criarContaCard(conta) {
+    const contaCard = document.createElement("div");
+    contaCard.className = "conta-card";
+
+    const detalhesConta = document.createElement("div");
+    detalhesConta.textContent = conta.toString();
+    contaCard.appendChild(detalhesConta);
+
+    return contaCard;
+}

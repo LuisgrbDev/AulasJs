@@ -41,6 +41,10 @@ class ContaBancaria {
 
     }
 
+    toString(){
+        return `Numero: ${this.numero} - Saldo: ${this.saldo} - Cliente: ${this.cliente.nome}`
+    }
+
 }
 
 
@@ -54,11 +58,11 @@ class ContaCorrente extends ContaBancaria {
 
         const limiteEspecial = this.saldo + this.limiteCheque;
 
-        if(valorSaque <= limiteEspecial){
-        return  super.sacar(valorSaque);
+        if (valorSaque <= limiteEspecial) {
+            return super.sacar(valorSaque);
+        }
+        return false
     }
-     return false
-    }   
 }
 
 class ContaPoupanca extends ContaBancaria {
@@ -76,27 +80,92 @@ class ContaPoupanca extends ContaBancaria {
 let contas = [];
 let clientes = [];
 
+function cadastrarCliente() {
+    // pegar dados de tela;
+    const nome = document.getElementById("nomeCliente").value;
+    const cpf = document.getElementById("cpfCliente").value;
+    //instanciar novo cliente;
+    let cliente = new Cliente(nome, cpf);
+
+    //add o cliente a lista de clientes;
+    clientes.push(cliente);
+
+    atualizarSeletorClientes();
+    exibirClientes();
+}
+
+function exibirClientes() {
+    const clientesList = document.getElementById("clienteList");
+    // Limpar a lista antes de exibir os clientes
+    clientesList.innerHTML = "";
+
+    for (let i = 0; i < clientes.length; i++) {
+        const clienteItem = document.createElement("li");
+        clienteItem.textContent = `Nome: ${clientes[i].nome} - CPF: ${clientes[i].cpf}`;
+        clientesList.appendChild(clienteItem);
+    }
+}
+
+function atualizarSeletorClientes() {
+    const seletorClientes = document.getElementById("cliente");
+
+    seletorClientes.innerHTML = "";
+
+    clientes.forEach(cliente => {
+        const option = document.createElement("option");
+        option.value = cliente.cpf;
+        option.textContent = cliente.nome;
+        seletorClientes.appendChild(option);
+    })
+}
+
+function cadastrarConta() {
+
+    //pegar os dados da tela 
+    const numero = parseInt(document.getElementById("numero").value);
+    const saldo = parseFloat(document.getElementById("saldo").value);
+    const tipoConta = document.getElementById("tipoConta").value;
+    //identificar o cliente selecionado na lista de clientes
+    const clienteSelecionado = document.getElementById("cliente").value;
+    const cliente = clientes.find(c => c.cpf === clienteSelecionado);
+    //instanciar uma nova conta,a partir do tipo de conta selecionada
 
 
-// let clienteA = new Cliente("Fulano", "1234567890");
-// clientes.push(clienteA);
-// let clienteB = new Cliente("Beltrano", "0987654321");
-// clientes.push(clienteB);
+    let conta;
+    switch (tipoConta) {
+        case "ContaCorrente":
+            conta = new ContaCorrente(cliente, numero, saldo, 100);
+            break;
+        case "ContaPoupanca":
+            conta = new ContaPoupanca(cliente, numero, saldo, 0.01);
+            break;
+        default:
+            alert("Tipo selecionado invalido");
+            break;
+    }
+    contas.push(conta)
+}
 
-// let contaX = new ContaCorrente(clienteA, 123, 200, 150);
-// contas.push(contaX);
-// let contaY = new ContaPoupanca(clienteB, 111, 0, 0.01);
-// contas.push(contaY);
-// let contaZ = new ContaCorrente(clienteB, 235, 0, 180);
-// contas.push(contaZ);
+function exibirContas() {
+    const contasList = document.getElementById("contaList");
+    // Limpar a lista antes de exibir as contas
+    contasList.innerHTML = "";
 
-// console.log("antes de sacar: ", contaX.saldo) // antes de sacar
+    for (let i = 0; i < contas.length; i++) {
+        const contaItem = document.createElement("li");
+        const contaCard = criarContaCard(contas[i]);
+        contasList.appendChild(contaCard);
+        contasList.appendChild(contaItem);
+    }
+}
 
-// contaX.sacar(200)
+function criarContaCard(conta) {
+    const contaCard = document.createElement("div");
+    contaCard.className = "conta-card";
 
-// console.log("depois de sacar: ", contaX.saldo)
+    const detalhesConta = document.createElement("div");
+    detalhesConta.textContent = conta.toString();
+    contaCard.appendChild(detalhesConta);
 
-// console.log(contas);
-// console.log(clientes);
-
-// console.log(contaY.cliente.nome);
+    return contaCard;
+}
